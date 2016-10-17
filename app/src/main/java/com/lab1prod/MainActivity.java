@@ -1,20 +1,35 @@
 package com.lab1prod;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+
+    private static final String AboutInfo = "Labaatory work #1"+"\n"+"Author:alma"+"\n"+"Group:6122"+"\n"+"University:SSAU";
+    private Button GoToCustom;
+    private Intent intent;
+    private Toast toast;
+    private AlertDialog.Builder ad;
+    private Context context;
+    private String[] data = {"one", "two", "three", "four", "five"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +46,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        toolbar.setBackground(new ColorDrawable(Color.parseColor("#222222")));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        Spinner spinner = (Spinner) findViewById(R.id.share_spinner);
+        spinner.setAdapter(adapter);
+        GoToCustom = (Button) findViewById(R.id.CustomActivity);
+        GoToCustom.setOnClickListener(this);
     }
 
     @Override
@@ -45,7 +66,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -79,5 +99,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        intent = new Intent(getApplicationContext(),CustomActivity.class);
+        startActivity(intent);
     }
 }
