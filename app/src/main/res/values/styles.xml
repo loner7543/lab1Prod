@@ -9,6 +9,10 @@
         <item name="actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
         <item name="android:itemBackground">@color/tail_color</item>
         <item name="android:itemTextAppearance">@style/myCustomMenuTextApearance</item>
+        <item name="android:listDivider">@color/general_text_color</item>
+
+        <item name="android:dropDownListViewStyle">@style/PopupMenuListView</item>
+        <item name="dropDownListViewStyle">@style/PopupMenuListView</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -26,6 +30,12 @@
 
     <style name="myCustomMenuTextApearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
         <item name="android:textColor">@color/font_color</item>
+    </style>
+
+
+    <style name="PopupMenuListView" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:divider">@color/general_text_color</item>
+        <item name="android:dividerHeight">2dp</item>
     </style>
 
 </resources>
