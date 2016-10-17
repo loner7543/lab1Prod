@@ -59,7 +59,7 @@
     <!--settings activity-->
     <string name="settingsActivity">Settings</string>
     <string name="general">General</string>
-    <string name="sound">Sound</string>
+    <string name="sound">Sound:  </string>
     <string name="default_sound">Default sound</string>
     <string name="notifications">Notifications</string>
     <string name="color_str">Color</string>
