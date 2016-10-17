@@ -60,7 +60,7 @@
     <string name="settingsActivity">Settings</string>
     <string name="general">General</string>
     <string name="sound">Sound:  </string>
-    <string name="default_sound">Default sound</string>
+    <string name="default_sound">Default sound:la la la</string>
     <string name="notifications">Notifications</string>
     <string name="color_str">Color</string>
     <string name="instant">Instant buy</string>
@@ -74,5 +74,6 @@
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="color">Color</string>
+    <string name="today">Today</string>
     <string name="date">19.09.2016</string>
 </resources>

@@ -14,18 +14,36 @@
     tools:context="com.lab1prod.Settings">
 
     <TextView
+        android:textColor="@color/settings_color"
+        android:text="@string/settingsActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_color" />
+
+    <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/general"
         android:textColor="@color/general_text_color"
         android:id="@+id/textView2" />
 
-    <LinearLayout
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/cp"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:paddingTop="@dimen/padding_top_on_controls"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sound"
@@ -34,15 +52,22 @@
         <TextView
             android:id="@+id/def_sound"
             android:text="@string/default_sound"
+            android:layout_below="@+id/textView3"
             android:textColor="@color/font_color"
             android:layout_width="wrap_content"
             android:onClick="OnInputSound"
             android:layout_height="wrap_content" />
-    </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
 
 
     <Switch
-        android:paddingTop="@dimen/padding_top_on_controls"
+        android:layout_marginTop="@dimen/cp"
         android:textColor="@color/font_color"
         android:id="@+id/notofications_switch"
         android:layout_width="match_parent"
@@ -52,19 +77,21 @@
         android:text="@string/notifications"
         android:textOff="@string/off"
         android:textOn="@string/on"/>
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
 
 
-    <!--color picker component-->
     <RelativeLayout
-        android:paddingTop="@dimen/padding_on_container"
-        android:paddingBottom="@dimen/padding_on_container"
+        android:layout_marginTop="@dimen/cp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="@string/color"
             android:textColor="@color/font_color"
             android:id="@+id/ColorTextView"
-            android:paddingTop="@dimen/padding_on_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
@@ -76,16 +103,28 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
+
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
+
     <TextView
-        android:paddingTop="@dimen/padding_on_container"
+        android:layout_marginTop="30dp"
         android:id="@+id/advertisement"
         android:textColor="@color/font_color"
         android:text="@string/Advertisement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="@color/settings_devider_color" />
+
     <Switch
-        android:paddingTop="@dimen/padding_on_container"
+        android:layout_marginTop="@dimen/cp"
         android:textColor="@color/font_color"
         android:id="@+id/buy_switch"
         android:layout_width="match_parent"
@@ -96,8 +135,21 @@
         android:paddingBottom="@dimen/padding_on_container"
         android:textOn="@string/on"/>
 
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
+
     <TextView
-        android:paddingTop="@dimen/padding_on_container"
+        android:layout_marginTop="@dimen/cp"
+        android:text="@string/today"
+        android:textColor="@color/font_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="@dimen/cp"
         android:textColor="@color/font_color"
         android:id="@+id/curr_date"
         android:clickable="true"
@@ -105,4 +157,10 @@
         android:text="@string/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="@dimen/cp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/settings_devider_color" />
 </LinearLayout>

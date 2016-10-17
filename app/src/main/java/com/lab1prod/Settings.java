@@ -25,6 +25,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
         actionBar = getSupportActionBar();
+        actionBar.hide();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
         setTitle(R.string.settingsActivity);
         SoundValue = (TextView) findViewById(R.id.def_sound);

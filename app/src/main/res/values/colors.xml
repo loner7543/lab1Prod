@@ -14,4 +14,6 @@
     <color name="sea_color">#00FFA9</color>
     <color name="blue">#1500FF</color>
     <color name="purple">#FF05DE</color>
+    <color name="settings_color">#39CAFF</color>
+    <color name="settings_devider_color">#202020</color>
 </resources>
