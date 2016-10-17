@@ -13,11 +13,9 @@
     <string name="Buy">Buy</string>
     <string name="Exit">Exit</string>
     <string name="user_name">User name</string>
-    <string-array name="bts">
-        <item>BIO</item>
-        <item>Tags</item>
-        <item>Settings</item>
-    </string-array>
+    <string name="bio">BIO</string>
+    <string name="tags">Tags</string>
+    <string name="settings">Settings</string>
     <string name="node_title">New node</string>
     <string name="node_desc">Add some notes here</string>
     <string name="Some_cool_news">Some cool news everyone</string>
