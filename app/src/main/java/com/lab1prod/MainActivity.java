@@ -1,6 +1,7 @@
 package com.lab1prod;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,7 +24,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
-    private static final String AboutInfo = "Labaatory work #1"+"\n"+"Author:alma"+"\n"+"Group:6122"+"\n"+"University:SSAU";
+    private static final String AboutInfo = "Labaratory work #1"+"\n"+"Author:alma"+"\n"+"Group:6122"+"\n"+"University:SSAU";
     private Button GoToCustom;
     private Intent intent;
     private Toast toast;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity
         spinner.setAdapter(adapter);
         GoToCustom = (Button) findViewById(R.id.CustomActivity);
         GoToCustom.setOnClickListener(this);
+        context = MainActivity.this;
     }
 
     @Override
@@ -72,14 +74,54 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
+        boolean res = false;
+        int selectedId = item.getItemId();
+        switch (selectedId){
+            case R.id.buy:{
+                res = true;
+                toast = Toast.makeText(getApplicationContext(),R.string.ToastText,Toast.LENGTH_LONG);
+                toast.show();
+                break;
+            }
+            case R.id.about:{
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(R.string.about_dialog)
+                        .setIcon(R.drawable.ic_action_about)
+                        .setMessage(AboutInfo)
+                        .setCancelable(false)
+                        .setNegativeButton("ОК",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();}});
+                AlertDialog alert = builder.create();
+                alert.show();
+                break;
+            }
+            case R.id.exit:{
+                res = true;
+                ad = new AlertDialog.Builder(context);
+                ad.setTitle(R.string.Exit_header);  // заголовок
+                ad.setMessage(R.string.Exit_desc); // сообщение
+                ad.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        finish();
+                        System.exit(0);
+                    }
+                });
+                ad.setNegativeButton(R.string.btn_camcel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        Toast.makeText(context, R.string.good_choice, Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+                ad.show();
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+        return res;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
