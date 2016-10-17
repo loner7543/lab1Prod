@@ -1,8 +1,80 @@
 <resources>
-    <string name="app_name">lab1Prod</string>
+    <string name="app_name">Notes</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_custom">CustomActivity</string>
+
+    <string name="ToastText">Ok,just give me a dollar</string>
+    <!--Right menu item-->
+    <string name="about">About</string>
+    <string name="Buy">Buy</string>
+    <string name="Exit">Exit</string>
+    <string name="user_name">User name</string>
+    <string-array name="bts">
+        <item>BIO</item>
+        <item>Tags</item>
+        <item>Settings</item>
+    </string-array>
+    <string name="node_title">New node</string>
+    <string name="node_desc">Add some notes here</string>
+    <string name="Some_cool_news">Some cool news everyone</string>
+    <string name="best_apps">To my mind , the best android apps excel in two areas: excellence and elegance. An excellent app provides something that no other app can</string>
+    <string name="adv_haulmont">Advertisement frm Haulmont</string>
+    <string name="best_framework">Do you want to use the best full stack application Framework?</string>
+    <string name="btn_buy">Buy</string>
+    <string name="Edit_node_image">Edit node pic</string>
+    <string name="share_image">Share image</string>
+    <string name="cancel_image">Cancel image</string>
+    <string name="go_custom">Go to custom activity</string>
+    <!--dialogs on MainActivity-->
+    <string name="about_dialog">About</string>
+    <string name="Exit_header">Exit confirmation</string>
+    <string name="Exit_desc">Are your sure you want to exit ?</string>
+    <string name="good_choice">Good choice</string>
+    <string name="btn_ok">Ok</string>
+    <string name="btn_camcel">Cancel</string>
+    <!--custom activity-->
+    <string name="numbers">Phone number</string>
+    <string name="calls">Calls</string>
+    <string name="contacts">Contacts</string>
+    <string name="favorites">Favorites</string>
+    <string name="custom_activity">Custom activity</string>
+    <string name="number_hint">Please enter phone number</string>
+    <string name="btn1">1</string>
+    <string name="btn2">2 ABC</string>
+    <string name="btn3">3 DEF</string>
+    <string name="btn4">4 GHI</string>
+    <string name="btn5">5 JKL</string>
+    <string name="btn6">6 MNO</string>
+    <string name="btn7">7 PQRS</string>
+    <string name="btn8">8 TUV</string>
+    <string name="btn9">9 WXYZ</string>
+    <string name="btn_z">*</string>
+    <string name="btn0">0 +</string>
+    <string name="btn_r">#</string>
+    <string name="sms">sms</string>
+    <string name="call">call</string>
+    <string name="cl">cl</string>
+    <!--settings activity-->
+    <string name="settingsActivity">Settings</string>
+    <string name="general">General</string>
+    <string name="sound">Sound</string>
+    <string name="default_sound">Default sound</string>
+    <string name="notifications">Notifications</string>
+    <string name="color_str">Color</string>
+    <string name="instant">Instant buy</string>
+    <string name="Advertisement">Advertisement</string>
+    <string name="sound_dialog_header">Enter sound</string>
+    <string name="sound_dialog_hint">Enter sound here..</string>
+    <string name="choose_date">Choice date</string>
+    <string name="ready">ready</string>
+    <string name="choice_color">Choice color</string>
+    <string name="color_dialog">Color input dialog</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+    <string name="color">Color</string>
+    <string name="date">19.09.2016</string>
 </resources>
