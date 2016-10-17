@@ -67,8 +67,14 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         View promptView = layoutInflater.inflate(R.layout.color_dialog, null);
         final  Button yButton = (Button) promptView.findViewById(R.id.yellow_color);
         final Button rButton = (Button) promptView.findViewById(R.id.red_color);
+        final Button seaButton = (Button) promptView.findViewById(R.id.sea_color);
+        final Button whiteutton = (Button) promptView.findViewById(R.id.white_btn);
+        final Button purpleutton = (Button) promptView.findViewById(R.id.purple_btn);
+        whiteutton.setOnClickListener(this);
+        seaButton.setOnClickListener(this);
         yButton.setOnClickListener(this);
         rButton.setOnClickListener(this);
+        purpleutton.setOnClickListener(this);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Settings.this);
         alertDialogBuilder.setTitle(R.string.color_dialog);
         alertDialogBuilder.setView(promptView);
@@ -92,6 +98,9 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View view) {
         int c = R.drawable.btn_yellow;
         int r = R.drawable.color_red;
+        int sea_color = R.drawable.btn_sea;
+        int blue = R.drawable.btn_white;
+        int purple = R.drawable.btn_purple;
         switch (view.getId()){
             case R.id.yellow_color:{
                 ColorButton.setBackgroundResource(c);
@@ -99,6 +108,18 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             }
             case R.id.red_color:{
                 ColorButton.setBackgroundResource(r);
+                break;
+            }
+            case R.id.sea_color:{
+                ColorButton.setBackgroundResource(sea_color);
+                break;
+            }
+            case R.id.white_btn:{
+                ColorButton.setBackgroundResource(blue);
+                break;
+            }
+            case R.id.purple_btn:{
+                ColorButton.setBackgroundResource(purple);
                 break;
             }
         }
