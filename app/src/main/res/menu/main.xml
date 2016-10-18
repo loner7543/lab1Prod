@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:id="@+id/g1">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
     <item
         android:id="@+id/about"
         android:orderInCategory="100"
         android:title="@string/about"
-        app:showAsAction="never"
-        android:enabled="false"
-        android:checkable="false" />
-    </group>
+        app:showAsAction="never" />
 
-    <group android:id="@+id/g2">
     <item
         android:id="@+id/buy"
         android:orderInCategory="100"
         android:title="@string/Buy"
-        app:showAsAction="never"/></group>
+        app:showAsAction="never"/>
 
 
-<group android:id="@+id/g3">
     <item
         android:id="@+id/exit"
         android:orderInCategory="100"
         android:title="@string/Exit"
-        app:showAsAction="never"/></group>
+        app:showAsAction="never"/>
 </menu>
