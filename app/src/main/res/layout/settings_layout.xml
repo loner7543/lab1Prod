@@ -86,6 +86,7 @@
 
     <RelativeLayout
         android:layout_marginTop="@dimen/cp"
+        android:id="@+id/Color_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView

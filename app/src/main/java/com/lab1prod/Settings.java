@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Settings extends AppCompatActivity implements View.OnClickListener {
+    private static final String SETTINGS_KEY = "Settings Activity:";
     private TextView DateTextView;
     private TextView SoundValue;
     private Button ColorButton;
     private ActionBar actionBar;
+    private int GlobalColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,24 +108,44 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         switch (view.getId()){
             case R.id.yellow_color:{
                 ColorButton.setBackgroundResource(c);
+                GlobalColor = c;
                 break;
             }
             case R.id.red_color:{
                 ColorButton.setBackgroundResource(r);
+                GlobalColor = r;
                 break;
             }
             case R.id.sea_color:{
                 ColorButton.setBackgroundResource(sea_color);
+                GlobalColor = sea_color;
                 break;
             }
             case R.id.white_btn:{
                 ColorButton.setBackgroundResource(blue);
+                GlobalColor = blue;
                 break;
             }
             case R.id.purple_btn:{
                 ColorButton.setBackgroundResource(purple);
+                GlobalColor = purple;
                 break;
             }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("Color",GlobalColor);
+        Log.d(SETTINGS_KEY,"Data add to bundle");
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        int restoreColor = savedInstanceState.getInt("Color");
+        ColorButton.setBackgroundResource(restoreColor);
+        Log.d(SETTINGS_KEY,"Reset sucs");
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
