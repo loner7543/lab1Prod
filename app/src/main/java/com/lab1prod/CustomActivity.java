@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 public class CustomActivity extends AppCompatActivity {
+    private static final String MainActivityKey = "MainActivity";
     private static final String NUMBERS = "Numbers";
     private static final  String CALLS = "Calls";
     private static final String GROUPS = "Groups";

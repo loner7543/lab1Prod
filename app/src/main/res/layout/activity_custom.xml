@@ -41,6 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dip">
                         <EditText
+                            android:id="@+id/Edit_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/number_hint"/>
