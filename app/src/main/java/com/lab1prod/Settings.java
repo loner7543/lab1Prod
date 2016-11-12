@@ -196,7 +196,19 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         int restoreColor = savedInstanceState.getInt("Color");
         ColorButton.setBackgroundResource(restoreColor);
         String restoreDate = savedInstanceState.getString("Date");
-        DateTextView.setText(restoreDate);
+        if(restoreDate==null){
+            if(mSettings.contains("Data")){
+                String val = mSettings.getString("Data", "");
+                DateTextView.setText(val);
+            }
+        }
+        else {
+            editor = mSettings.edit();
+            DateTextView.setText(restoreDate);
+            ColorButton.setBackgroundResource(restoreColor);
+            editor.putString("Data", restoreDate);
+            editor.apply();
+        }
         Log.d(SETTINGS_KEY,"Reset sucs");
         super.onRestoreInstanceState(savedInstanceState);
     }
