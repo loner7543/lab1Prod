@@ -155,7 +155,6 @@
         android:id="@+id/curr_date"
         android:clickable="true"
         android:onClick="onSetText"
-        android:text="@string/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

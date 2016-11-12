@@ -16,6 +16,11 @@ import java.util.Calendar;
  */
 
 public class DatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    public String DateText;
+    private TextView TextView;
+    public DatePicker(TextView textView){
+       this.TextView = textView;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
@@ -37,8 +42,15 @@ public class DatePicker extends DialogFragment implements DatePickerDialog.OnDat
 
     @Override
     public void onDateSet(android.widget.DatePicker datePicker, int year, int month, int day) {
-        TextView tv = (TextView) getActivity().findViewById(R.id.curr_date);
         int mn = month+1;
-        tv.setText(day + "." + mn + "." + year);
+        DateText = day + "." + mn + "." + year;
+        TextView.setText(day + "." + mn + "." + year);
     }
+
+  /* @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("Data",DateText);
+        super.onSaveInstanceState(outState);
+    }*/
+    public String getDTAASTring(){return DateText;}
 }

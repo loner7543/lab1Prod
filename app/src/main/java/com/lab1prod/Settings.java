@@ -1,9 +1,12 @@
 package com.lab1prod;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,17 +14,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
+
+import java.util.Calendar;
 
 public class Settings extends AppCompatActivity implements View.OnClickListener {
     private static final String SETTINGS_KEY = "Settings Activity:";
+    public static final String APP_PREFERENCES = "mysettings";
     private TextView DateTextView;
     private TextView SoundValue;
     private Button ColorButton;
     private ActionBar actionBar;
     private int GlobalColor;
+    private String StoredDate;
+    private  DialogFragment dloateDiag;
+    private Switch NotificationSwitch;
+    private Switch AdvSwitch;
+    private android.widget.DatePicker DatePickerAndroid;
+    private String CurrentDate;
+    private SharedPreferences mSettings;
+    private SharedPreferences.Editor editor;
+    public static final String APP_PREFERENCES_COUNTER = "counter";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +47,47 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         SoundValue = (TextView) findViewById(R.id.def_sound);
         DateTextView = (TextView) findViewById(R.id.curr_date);
         ColorButton = (Button) findViewById(R.id.btn_scan_qr);
+        NotificationSwitch = (Switch) findViewById(R.id.notofications_switch);
+        NotificationSwitch.setChecked(true);
+        AdvSwitch = (Switch) findViewById(R.id.buy_switch);
+        AdvSwitch.setChecked(false);
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH)+1;
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        CurrentDate = day + "." + month + "." + year;
+        DateTextView.setText(CurrentDate);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void onSetText(View view){
-        DialogFragment dateDialog = new com.lab1prod.DatePicker();
+        LayoutInflater layoutInflater = LayoutInflater.from(Settings.this);
+        View promptView = layoutInflater.inflate(R.layout.date_dialog, null);
+        DatePickerAndroid = (android.widget.DatePicker) promptView.findViewById(R.id.datePicker);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Settings.this);
+        alertDialogBuilder.setView(promptView);
+        alertDialogBuilder.setCancelable(false)
+                .setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        int day = DatePickerAndroid.getDayOfMonth();
+                        int month = DatePickerAndroid.getMonth() + 1;
+                        int year = DatePickerAndroid.getYear();
+                        StoredDate = day + "." + month + "." + year;
+                        DateTextView.setText(StoredDate);
+                    }
+                })
+                .setNegativeButton(R.string.btn_camcel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+
+        /*dateDialog = new com.lab1prod.DatePicker(DateTextView);
         dateDialog.show(getSupportFragmentManager(), "datePicker");
+        dateDialog.setRetainInstance(true);*/
     }
 
     //sound dialog
@@ -137,6 +186,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt("Color",GlobalColor);
+        outState.putString("Date",StoredDate);
         Log.d(SETTINGS_KEY,"Data add to bundle");
         super.onSaveInstanceState(outState);
     }
@@ -145,6 +195,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         int restoreColor = savedInstanceState.getInt("Color");
         ColorButton.setBackgroundResource(restoreColor);
+        String restoreDate = savedInstanceState.getString("Date");
+        DateTextView.setText(restoreDate);
         Log.d(SETTINGS_KEY,"Reset sucs");
         super.onRestoreInstanceState(savedInstanceState);
     }
