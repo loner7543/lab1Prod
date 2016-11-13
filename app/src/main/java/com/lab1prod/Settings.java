@@ -218,13 +218,24 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         }
         else
         {
-            outState.putInt("Color",GlobalColor);//взять число с кнопки квк int
+            outState.putInt("Color",GlobalColor);//взять цвет с кнопки квк int
             editor = mSettings.edit();
             editor.putString("Color", SoundValue.getText().toString());
             editor.apply();
         }
 
-        outState.putString("Date",StoredDate);
+        if (DateTextView.getText().toString()==null)
+        {
+            outState.putString("Date",mSettings.getString("Date",""));
+        }
+        else
+        {
+            outState.putString("Date",DateTextView.getText().toString());
+            editor = mSettings.edit();
+            editor.putString("Date", DateTextView.getText().toString());
+            editor.apply();
+        }
+        //outState.putString("Date",StoredDate);
         Log.d(SETTINGS_KEY,"Data add to bundle");
         super.onSaveInstanceState(outState);
     }
@@ -237,8 +248,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         String restoreSound = savedInstanceState.getString("StoredSound");
         SoundValue.setText(restoreSound);
         ColorButton.setBackgroundResource(restoreColor);
-
-        if(restoreDate==null){
+        DateTextView.setText(restoreDate);
+        /*if(restoreDate==null){
             if(mSettings.contains("Data")){
                 ColorButton.setBackgroundResource(restoreColor);
                 String val = mSettings.getString("Data", "");
@@ -250,7 +261,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             DateTextView.setText(restoreDate);
             editor.putString("Data", restoreDate);
             editor.apply();
-        }
+        }*/
         Log.d(SETTINGS_KEY,"Reset sucs");
         super.onRestoreInstanceState(savedInstanceState);
     }
