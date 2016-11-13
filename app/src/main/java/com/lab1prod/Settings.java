@@ -5,16 +5,18 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -38,10 +40,11 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     private boolean isCurrDate;
 
     //цвета int
-    private static final int rED_Color = 2130837585;
-    private static final  int YELLOW = 2130837584;
-    private static final int SEA_COLOr = 2130837582;
-    private static final int PUrPLE = 2130837581;
+    private static final int rED_Color = 25500;
+    private static final  int YELLOW = 24825548;
+
+    private static final int SEA_COLOr = 4225536;//0255169
+    private static final int PUrPLE = 25560239;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,11 +159,11 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        int c = R.drawable.btn_yellow;
-        int r = R.drawable.color_red;
-        int sea_color = R.drawable.btn_sea;
-        int blue = R.drawable.btn_white;
-        int purple = R.drawable.btn_purple;
+        int c = R.color.yellow_color;
+            int r = R.color.red_color;
+        int sea_color = R.color.sea_color;
+        int blue = R.color.blue;
+        int purple = R.color.purple;
         switch (view.getId()){
             case R.id.yellow_color:{
                 ColorButton.setBackgroundResource(c);
@@ -196,6 +199,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {//смотреть что именно не стоит: цвет или дата
+        ColorDrawable buttonColor = (ColorDrawable) ColorButton.getBackground();
+        int colorId = buttonColor.getColor();
+        int red = (colorId >> 16) & 0xFF;
+        int green = (colorId >> 8) & 0xFF;
+        int blue = (colorId >> 0) & 0xFF;
+        String stringColor = String.valueOf(red)+String.valueOf(green)+String.valueOf(blue);
+        int CInt = Integer.valueOf(stringColor);
         //int c=Integer.parseInt(ColorButton.getTag().toString());
         /*editor = mSettings.edit();
         editor.clear();
@@ -218,7 +228,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         }
         else
         {
-            outState.putInt("Color",GlobalColor);//взять цвет с кнопки квк int
+            outState.putInt("Color",CInt);//взять цвет с кнопки квк int
             editor = mSettings.edit();
             editor.putString("Color", SoundValue.getText().toString());
             editor.apply();
@@ -247,7 +257,24 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         String restoreDate = savedInstanceState.getString("Date");
         String restoreSound = savedInstanceState.getString("StoredSound");
         SoundValue.setText(restoreSound);
-        ColorButton.setBackgroundResource(restoreColor);
+        switch (restoreColor){
+            case rED_Color:{
+                ColorButton.setBackgroundResource(R.color.red_color);
+                break;
+            }
+            case YELLOW:{
+                ColorButton.setBackgroundResource(R.color.yellow_color);
+                break;
+            }
+            case PUrPLE:{
+                ColorButton.setBackgroundResource(R.color.purple);
+                break;
+            }
+            case SEA_COLOr:{
+                ColorButton.setBackgroundResource(R.color.sea_color);
+                break;
+            }
+        }
         DateTextView.setText(restoreDate);
         /*if(restoreDate==null){
             if(mSettings.contains("Data")){

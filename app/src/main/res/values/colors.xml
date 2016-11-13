@@ -11,9 +11,12 @@
     <color name="bacground_color">#000000</color>
     <color name="button_color">#555555</color>
     <!--colors buttons-->
-    <color name="sea_color">#00FFA9</color>
+    <color name="sea_color">#2AFF24</color>
     <color name="blue">#1500FF</color>
-    <color name="purple">#FF05DE</color>
+    <color name="purple">#FF3CEF</color>
+    <color name="red_color">#FF0000</color>
+    <color name="yellow_color">#F8FF37</color>
+
     <color name="settings_color">#39CAFF</color>
     <color name="settings_devider_color">#202020</color>
 </resources>

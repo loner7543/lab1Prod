@@ -12,14 +12,14 @@
     <Button
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/btn_yellow"
+        android:background="@color/yellow_color"
         android:id="@+id/yellow_color"
         android:onClick="onSetColor"
         android:layout_below="@+id/c_header" />
     <Button
         android:id="@+id/red_color"
         android:onClick="onSetColor"
-        android:background="@drawable/color_red"
+        android:background="@color/red_color"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/c_header"
@@ -27,7 +27,7 @@
     <Button
         android:id="@+id/sea_color"
         android:onClick="onSetColor"
-        android:background="@drawable/btn_sea"
+        android:background="@color/sea_color"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/c_header"
@@ -35,7 +35,7 @@
     <Button
         android:id="@+id/white_btn"
         android:onClick="onSetColor"
-        android:background="@drawable/btn_white"
+        android:background="@color/blue"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/c_header"
@@ -43,7 +43,7 @@
     <Button
         android:id="@+id/purple_btn"
         android:onClick="onSetColor"
-        android:background="@drawable/btn_purple"
+        android:background="@color/purple"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/c_header"

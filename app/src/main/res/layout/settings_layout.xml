@@ -98,7 +98,7 @@
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/btn_color"
+            android:background="@color/sea_color"
             android:id="@+id/btn_scan_qr"
             android:onClick="onSetColor"
             android:layout_alignParentTop="true"
