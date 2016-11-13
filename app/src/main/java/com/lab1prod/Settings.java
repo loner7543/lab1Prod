@@ -25,7 +25,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     private TextView SoundValue;
     private Button ColorButton;
     private ActionBar actionBar;
-    private int GlobalColor;
+    private int GlobalColor = 2130837582;//последний выбранный цвет
     private String StoredDate;
     private  DialogFragment dloateDiag;
     private Switch NotificationSwitch;
@@ -34,7 +34,14 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     private String CurrentDate;
     private SharedPreferences mSettings;
     private SharedPreferences.Editor editor;
-    public static final String APP_PREFERENCES_COUNTER = "counter";
+    private String defSound = "la la la";
+    private boolean isCurrDate;
+
+    //цвета int
+    private static final int rED_Color = 2130837585;
+    private static final  int YELLOW = 2130837584;
+    private static final int SEA_COLOr = 2130837582;
+    private static final int PUrPLE = 2130837581;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,21 +169,25 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             }
             case R.id.red_color:{
                 ColorButton.setBackgroundResource(r);
+                //ColorButton.setTag(1,r);
                 GlobalColor = r;
                 break;
             }
             case R.id.sea_color:{
                 ColorButton.setBackgroundResource(sea_color);
+               //ColorButton.setTag(2,sea_color);
                 GlobalColor = sea_color;
                 break;
             }
             case R.id.white_btn:{
                 ColorButton.setBackgroundResource(blue);
+                //ColorButton.setTag(3,blue);
                 GlobalColor = blue;
                 break;
             }
             case R.id.purple_btn:{
                 ColorButton.setBackgroundResource(purple);
+                //ColorButton.setTag(4,purple);
                 GlobalColor = purple;
                 break;
             }
@@ -184,20 +195,52 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt("Color",GlobalColor);
+    protected void onSaveInstanceState(Bundle outState) {//смотреть что именно не стоит: цвет или дата
+        //int c=Integer.parseInt(ColorButton.getTag().toString());
+        /*editor = mSettings.edit();
+        editor.clear();
+        editor.commit();*/
+        //sound
+        if (SoundValue.getText().toString()==null){
+            outState.putString("StoredSound",mSettings.getString("StoredSound", ""));
+        }
+        else {
+            outState.putString("StoredSound",SoundValue.getText().toString());
+
+            editor = mSettings.edit();
+            editor.putString("StoredSound", SoundValue.getText().toString());
+            editor.apply();
+        }
+
+        //color
+        if (ColorButton.getBackground()==null){
+            outState.putInt("Color",mSettings.getInt("Color", 0));
+        }
+        else
+        {
+            outState.putInt("Color",GlobalColor);//взять число с кнопки квк int
+            editor = mSettings.edit();
+            editor.putString("Color", SoundValue.getText().toString());
+            editor.apply();
+        }
+
         outState.putString("Date",StoredDate);
         Log.d(SETTINGS_KEY,"Data add to bundle");
         super.onSaveInstanceState(outState);
     }
 
+
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         int restoreColor = savedInstanceState.getInt("Color");
-        ColorButton.setBackgroundResource(restoreColor);
         String restoreDate = savedInstanceState.getString("Date");
+        String restoreSound = savedInstanceState.getString("StoredSound");
+        SoundValue.setText(restoreSound);
+        ColorButton.setBackgroundResource(restoreColor);
+
         if(restoreDate==null){
             if(mSettings.contains("Data")){
+                ColorButton.setBackgroundResource(restoreColor);
                 String val = mSettings.getString("Data", "");
                 DateTextView.setText(val);
             }
@@ -205,7 +248,6 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         else {
             editor = mSettings.edit();
             DateTextView.setText(restoreDate);
-            ColorButton.setBackgroundResource(restoreColor);
             editor.putString("Data", restoreDate);
             editor.apply();
         }
