@@ -39,7 +39,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/c_header"
-        android:layout_toEndOf="@+id/sea_color" />
+        android:layout_toEndOf="@+id/purple_btn" />
     <Button
         android:id="@+id/purple_btn"
         android:onClick="onSetColor"
