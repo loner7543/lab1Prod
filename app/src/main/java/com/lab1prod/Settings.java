@@ -68,6 +68,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
+        LayoutInflater layoutInflater = LayoutInflater.from(Settings.this);
+        View promptView = layoutInflater.inflate(R.layout.text_input_dialog, null);
         actionBar = getSupportActionBar();
         actionBar.hide();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
@@ -75,6 +77,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         SoundValue = (TextView) findViewById(R.id.def_sound);
         DateTextView = (TextView) findViewById(R.id.curr_date);
         ColorButton = (Button) findViewById(R.id.btn_scan_qr);
+        DialogSound = (EditText)  promptView.findViewById(R.id.edittext);
         NotificationSwitch = (Switch) findViewById(R.id.notofications_switch);
         NotificationSwitch.setChecked(true);
         AdvSwitch = (Switch) findViewById(R.id.buy_switch);
@@ -83,9 +86,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         mn = mounth+1;
         CurrentDate = day + "." + mn + "." + year;
         DateTextView.setText(CurrentDate);
-        if (DialogSound!=null){
-            textSong = DialogSound.getText().toString();
-        }
+    //    textSong = DialogSound.getText().toString();
+
     }
 
     public void onSetText(View view){
@@ -99,7 +101,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     //sound dialog
     public void OnInputSound(View view){
         soundDialogState = true;
-        onShowSoundDialog(SoundValue.getText().toString());
+        onShowSoundDialog();
     }
 
     //colo dialog
@@ -173,7 +175,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             editor.putString("StoredSound", SoundValue.getText().toString());
             editor.apply();
         }
-        outState.putString("textSong",textSong);
+        outState.putString("textSong",DialogSound.getText().toString());
 
         //color
         if (ColorButton.getBackground()==null){
@@ -225,7 +227,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         textSong = savedInstanceState.getString("textSong");
         soundDialogState = savedInstanceState.getBoolean("soundDialog");
         if (soundDialogState){
-            onShowSoundDialog(textSong);
+            onShowSoundDialog();
         }
         SoundValue.setText(restoreSound);
         switch (restoreColor){
@@ -329,13 +331,15 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         alert.show();
     }
 
-    public void onShowSoundDialog(final String song){
+    public void onShowSoundDialog(){
         LayoutInflater layoutInflater = LayoutInflater.from(Settings.this);
         View promptView = layoutInflater.inflate(R.layout.text_input_dialog, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Settings.this);
         alertDialogBuilder.setView(promptView);
 
         DialogSound  = (EditText) promptView.findViewById(R.id.edittext);
+        DialogSound.setText(textSong);
+
         DialogSound.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -346,7 +350,6 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
                 return false;
             }
         });
-        DialogSound.setText(song);
         alertDialogBuilder.setCancelable(false)
                 .setNegativeButton(R.string.btn_ok,
                         new DialogInterface.OnClickListener() {
