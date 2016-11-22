@@ -50,7 +50,7 @@
     <string name="btn7">7 PQRS</string>
     <string name="btn8">8 TUV</string>
     <string name="btn9">9 WXYZ</string>
-    <string name="btn_z">*</string>
+    <string name="btn_z">* #</string>
     <string name="btn0">0 +</string>
     <string name="btn_r">#</string>
     <string name="sms">sms</string>
