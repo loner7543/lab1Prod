@@ -19,7 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Settings" />
-        <activity android:name=".CustomActivity"></activity>
+        <activity android:name=".CustomActivity" />
+        <activity
+            android:name=".PhoneActivity"
+            android:label="@string/title_activity_phone"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

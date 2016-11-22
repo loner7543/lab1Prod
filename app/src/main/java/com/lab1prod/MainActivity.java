@@ -149,4 +149,9 @@ public class MainActivity extends AppCompatActivity
         intent = new Intent(getApplicationContext(),CustomActivity.class);
         startActivity(intent);
     }
+
+    public void onCustomPhoneClick(View view){
+        Intent intent = new Intent(getApplicationContext(),PhoneActivity.class);
+        startActivity(intent);
+    }
 }

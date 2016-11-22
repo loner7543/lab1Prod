@@ -76,4 +76,5 @@
     <string name="color">Color</string>
     <string name="today">Today</string>
     <string name="date">19.09.2016</string>
+    <string name="title_activity_phone">PhoneActivity</string>
 </resources>
