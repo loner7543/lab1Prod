@@ -77,4 +77,10 @@
     <string name="today">Today</string>
     <string name="date">19.09.2016</string>
     <string name="title_activity_phone">PhoneActivity</string>
+    <!---Phone activity text-->
+    <string name="support_two_sim">Поддержка 2 SIM</string>
+    <string name="change_sim">Чтобы сменить активную сим-карту потяните меню слева</string>
+    <string name="alex_er">Саша Еремина</string>
+    <string name="alex_num">8(927)609-82</string>
+    <string name="val_name">Валя</string>
 </resources>

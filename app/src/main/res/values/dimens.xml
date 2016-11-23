@@ -17,4 +17,5 @@
     <!--Custom activity-->
     <dimen name="custom_margin">20dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="phone_container_margin">30dp</dimen>
 </resources>
