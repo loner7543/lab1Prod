@@ -1,5 +1,8 @@
 package com.lab1prod;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,6 +27,7 @@ public class PhoneActivity extends AppCompatActivity
         setContentView(R.layout.activity_phone);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.phone_action_bar_color))); 
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

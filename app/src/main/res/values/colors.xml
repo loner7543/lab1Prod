@@ -20,4 +20,6 @@
 
     <color name="settings_color">#39CAFF</color>
     <color name="settings_devider_color">#202020</color>
+    <color name="floating_action_button_background">#4C4C4C</color>
+    <color name="phone_action_bar_color">#9ECA68</color>
 </resources>
