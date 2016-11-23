@@ -1,5 +1,6 @@
 package com.lab1prod;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -20,14 +21,16 @@ import android.view.MenuItem;
 
 public class PhoneActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
+        fragment = new Keyboardfragment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.phone_action_bar_color))); 
+        toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.phone_action_bar_color)));
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -35,8 +38,9 @@ public class PhoneActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                getFragmentManager().beginTransaction().replace(R.id.cont, fragment).commit();
+               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
 
