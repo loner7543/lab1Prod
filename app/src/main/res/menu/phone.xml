@@ -2,8 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/photo"
+        android:title="Photo"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/video"
+        android:title="Video"
+        android:showAsAction="ifRoom|withText"
+        />
+
+
+    <item
+        android:id="@+id/mobile"
+        android:title="Mobile"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionLayout="@layout/search_layout"
+
+        />
 </menu>
