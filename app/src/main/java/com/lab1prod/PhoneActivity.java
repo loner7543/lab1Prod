@@ -32,17 +32,20 @@ public class PhoneActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
         fragment = new Keyboardfragment();
+        //
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.phone_action_bar_color)));
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setImageResource(android.R.drawable.title_bar);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab.setImageResource(android.R.drawable.btn_default);
+       // fab.setBackgroundColor(getResources().getColor(R.color.general_text_color));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.cont, fragment).commit();
+                fab.hide();
+                getFragmentManager().beginTransaction().replace(R.id.replasement, fragment).commit();
                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
             }
@@ -72,15 +75,15 @@ public class PhoneActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.phone, menu);
-        View v = (View) menu.findItem(R.id.search);
-        EditText txtSearch = ( EditText ) v.findViewById(R.id.txt_search);
-        txtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        //View v = (View) menu.findItem(R.id.search);
+        //EditText txtSearch = ( EditText ) v.findViewById(R.id.txt_search);
+       // txtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            /*public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 Toast.makeText(getBaseContext(), "Search : " + textView.getText(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
+        return true;*/
         return true;
     }
 
