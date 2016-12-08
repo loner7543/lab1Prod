@@ -28,6 +28,13 @@
                     android:hint="Enter text..."
                     android:background="#9ECA68" />
             </RelativeLayout>
+           <!-- <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/voice" />-->
 
         </android.support.v7.widget.Toolbar>
 
